@@ -1,0 +1,50 @@
+<h1 class="text-white text-lg font-bold">Витрати за місяці</h1>
+
+<div class="mt-6">
+  <div
+    class="flex items-center justify-between py-2 px-3 border-t-2 border-l-2 border-r-2 border-white text-white text-lg font-bold rounded-t-[15px]"
+  >
+    <h3>Назва</h3>
+    <p>Cума</p>
+    <div></div>
+  </div>
+  <ul *ngFor="let list of costLists">
+    <li
+      class="flex items-center justify-between py-2 px-3 border-t-2 border-l-2 border-r-2 last:border-b-2 border-white text-white mob:text-sm tab:text-lg"
+    >
+      <div>
+        <h3>{{ list.title | capitalizeFirst }}</h3>
+        <a [routerLink]="['/private/costs', list._id]">Детальніше</a>
+      </div>
+
+      <p>{{ list.sum | number : "1.2-2" }}</p>
+
+      <div class="flex items-center gap-3">
+        <button
+          type="button"
+          (click)="openDeleteModal(list._id, list.title)"
+          class="text-white bg-green-950 p-3 rounded-full hover:bg-white hover:text-green-950 hover:shadow-bt_shadow"
+        >
+          <svg class="size-4">
+            <use href="#icon-bin"></use>
+          </svg>
+        </button>
+      </div>
+    </li>
+  </ul>
+
+  <button
+    class="px-3 py-2 mt-3 border-2 border-white text-white hover:bg-text_col rounded-[16px] hover:shadow-bt_shadow"
+    type="button"
+    (click)="createCostList()"
+  >
+    Додати
+  </button>
+</div>
+<app-delete-modal
+  [visible]="isDeleteModalVisible"
+  [itemId]="idToDelete"
+  [title]="titleToDelete"
+  (confirmDelete)="confirmDelete($event)"
+  (cancel)="closeDeleteModal()"
+></app-delete-modal>

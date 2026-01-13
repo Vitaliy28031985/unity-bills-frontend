@@ -1,27 +1,88 @@
-# UtilityBills
+Base-url: https://unity-bills-backend.onrender.com
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.6.
+AUTH
 
-## Development server
+POST /auth/register
+{
+"name": "Vitalii",
+"email": "vitalii4@i.ua",
+"password": "12345678"
+}
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+POST /auth/login
+{
+"email": "vitalii4@i.ua",
+"password": "12345678"
+}
 
-## Code scaffolding
+POST /auth/logout
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+POST /auth/allow/add/listId
+{
+"email": "vitalii@i.ua"
+}
 
-## Build
+POST /auth/allow/delete/listId
+{
+"email": "vitalii@i.ua"
+}
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+FIXED COSTS
 
-## Running unit tests
+POST /fixed-costs
+{
+"title": "Вивіз сміття",
+"sum": 50.3
+}
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+PUT. /fixed-costs/id
+{
+"title": "Вивіз сміття",
+"sum": 50.3
+}
 
-## Running end-to-end tests
+DELETE /fixed-costs/id
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+GET /fixed-costs
 
-## Further help
+PRICE
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+GET /price
+
+POST /price
+{
+"title": "jhkjhkjh",
+"price": 4.33
+}
+
+PUT /price/id
+{
+"title": "Світло",
+"price": 4.33
+}
+
+DELETE /price/id
+
+COST LIST
+
+GET /costs-list
+
+POST /costs-list
+
+DELETE /costs-list/id
+
+POST. /costs-list/costs/listId
+{
+"title": "Споживання газу",
+"price": 7.95689,
+"number": 45
+}
+
+PATCH /costs-list/costs/listId/costId
+{
+"title": "Споживання газу",
+"price": 7.95689,
+"number": 55
+}
+
+DELETE /costs-list/costs/listId/costId

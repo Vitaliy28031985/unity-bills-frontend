@@ -1,0 +1,107 @@
+<section class="flex justify-center">
+  <div class="relative tab:w-[624px] desk:w-[746px]">
+    <div
+      class="tab:w-[624px] desk:w-[746px] mt-16 bg-formGradient rounded-tl-[16px] rounded-tr-[16px] mx-auto shadow-form_shadow"
+    >
+      <div class="flex items-center justify-between py-1 px-2">
+        <div
+          class="tab:w-[350px] desk:w-[221px] mx-3 text-lg text-white font-bold"
+        >
+          НАЗВА
+        </div>
+
+        <div
+          class="mob:w-[88px] tab:w-[105px] text-center text-lg text-white font-bold"
+        >
+          Ціна
+        </div>
+        <div class="mob:w-[88px] tab:w-[105px]"></div>
+      </div>
+
+      <div
+        *ngFor="let list of pricesLists"
+        class="flex items-center justify-between mob:gap-2 tab:gap-0 py-1 px-2 mx-[2px] mb-[2px] bg-white shadow-shadow_menu"
+      >
+        <div
+          class="tab:w-[350px] desk:w-[221px] mx-3 mob:text-sm tab:text-lg text-text_op"
+        >
+          <ng-container *ngIf="!list.isShow">
+            <p>{{ list.title }}</p>
+          </ng-container>
+          <ng-container *ngIf="list.isShow">
+            <input
+              class="mob:w-[100px] tab:w-[350px] desk:w-[221px] focus:outline-none"
+              type="text"
+              [(ngModel)]="list.title"
+            />
+          </ng-container>
+        </div>
+
+        <div
+          class="tab:w-[105px] desk:w-[105px] text-center mob:text-sm tab:text-lg text-text_op"
+        >
+          <ng-container *ngIf="!list.isShow">
+            <p>{{ list.price }}</p>
+          </ng-container>
+          <ng-container *ngIf="list.isShow">
+            <input
+              class="mob:w-[50px] tab:w-[105px] desk:w-[105px] focus:outline-none"
+              type="number"
+              [(ngModel)]="list.price"
+            />
+          </ng-container>
+        </div>
+        <div class="flex items-center gap-2">
+          <button
+            type="button"
+            (click)="updatePrice(list)"
+            class="text-green-950 border-2 border-green-950 p-2 rounded-full hover:text-white hover:bg-green-950"
+          >
+            <ng-container *ngIf="!list.isShow; else saveIcon">
+              <svg class="size-3" aria-hidden="true" focusable="false">
+                <use href="#icon-pencil"></use>
+              </svg>
+            </ng-container>
+
+            <ng-template #saveIcon>
+              <svg class="size-3">
+                <use href="#icon-floppy-disk"></use>
+              </svg>
+            </ng-template>
+          </button>
+          <button
+            type="button"
+            (click)="openDeleteModal(list._id, list.title)"
+            class="text-green-950 border-2 border-green-950 p-2 rounded-full hover:text-white hover:bg-green-950"
+          >
+            <svg class="size-3">
+              <use href="#icon-bin"></use>
+            </svg>
+          </button>
+        </div>
+      </div>
+      <div *ngIf="isShowAdd">
+        <app-create-price (create)="createPrice($event)"></app-create-price>
+      </div>
+    </div>
+    <button
+      (click)="toggle()"
+      class="px-3 py-2 mt-3 border-2 border-white text-white hover:bg-text_col rounded-[16px] hover:shadow-bt_shadow"
+      type="button"
+    >
+      <ng-container *ngIf="!isShowAdd">
+        <p>Додати</p>
+      </ng-container>
+      <ng-container *ngIf="isShowAdd">
+        <p>Відмінити</p>
+      </ng-container>
+    </button>
+  </div>
+</section>
+<app-delete-modal
+  [visible]="isDeleteModalVisible"
+  [itemId]="idToDelete"
+  [title]="titleToDelete"
+  (confirmDelete)="deletePrice($event)"
+  (cancel)="closeDeleteModal()"
+></app-delete-modal>

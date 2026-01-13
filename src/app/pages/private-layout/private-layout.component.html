@@ -1,0 +1,56 @@
+<header
+  class="relative flex items-center justify-between shadow-bt_shadow mob:w-[320px] tab:w-[768px] desk:w-[1280px] py-4 rounded-[10px] mob:px-3 tab:px-8 desk:px-10 mx-auto bg-inputGradient"
+>
+  <ul class="mob:hidden tab:flex items-center gap-5">
+    <ng-container *ngFor="let link of links">
+      <li>
+        <a
+          class="text-white hover:text-text_col text-lg font-bold"
+          [routerLink]="link.link"
+          routerLinkActive="text-text_col"
+          [routerLinkActiveOptions]="{ exact: false }"
+        >
+          {{ link.title }}
+        </a>
+      </li>
+    </ng-container>
+  </ul>
+  <BUtton
+    type="button"
+    (click)="toggle()"
+    class="text-white text-3xl tab:hidden hover:shadow-bt_shadow"
+  >
+    <ng-container *ngIf="!isShowMenu"> ☰ </ng-container>
+    <ng-container *ngIf="isShowMenu">&times;</ng-container>
+  </BUtton>
+
+  <button
+    class="px-3 py-2 mt-3 border-2 border-white text-white hover:bg-text_col rounded-[16px] hover:shadow-bt_shadow"
+    type="button"
+    (click)="logout()"
+  >
+    Вийти
+  </button>
+
+  <ul
+    *ngIf="isShowMenu"
+    class="absolute w-80 top-[86px] left-0 bg-white px-3 py-5 z-50"
+  >
+    <ng-container *ngFor="let link of links">
+      <li>
+        <a
+          class="block mb-4 font-normal text-center text-xl text-black hover:text-blue-30 focus:text-blue-30"
+          [routerLink]="link.link"
+          routerLinkActive="text-text_col"
+          (click)="toggle()"
+          [routerLinkActiveOptions]="{ exact: false }"
+          >{{ link.title }}</a
+        >
+      </li>
+    </ng-container>
+  </ul>
+</header>
+
+<main class="mob:w-[320px] tab:w-[768px] desk:w-[1280px] mx-auto mt-7 px-5">
+  <router-outlet></router-outlet>
+</main>

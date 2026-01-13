@@ -1,0 +1,98 @@
+<h2 class="text-white text-center font-bold text-3xl mb-10">Зареєструватись</h2>
+
+<form #noteForm="ngForm" (ngSubmit)="register(noteForm)">
+  <div class="mb-7">
+    <label class="block mb-1 text-label_col" for="">Ваш логін:</label>
+    <input
+      name="userName"
+      class="mob:w-[247px] tab:w-[420px] desk:w-[420px] h-[60px] p-5 rounded-[9px] bg-inputGradient bg-no-repeat bg-cover text-white appearance-none bg-transparent focus:shadow-form_shadow outline-none"
+      type="text"
+      ngModel
+      required
+      minlength="3"
+      maxlength="15"
+      #userNameRef="ngModel"
+      placeholder="Твій user name"
+    />
+    <div
+      *ngIf="submitted && userNameRef.invalid"
+      class="text-red-500 text-sm mt-1"
+    >
+      <p *ngIf="userNameRef.errors?.['required']">Це поле є обов'язковим!</p>
+      <p *ngIf="userNameRef.errors?.['minlength']">
+        Це поле має містити мінімум 3 символи!
+      </p>
+      <p *ngIf="userNameRef.errors?.['maxlength']">
+        Це поле має містити максимум 15 символи!
+      </p>
+    </div>
+  </div>
+  <div class="mb-7">
+    <label class="block mb-1 text-label_col" for="">Ваш e-mail:</label>
+    <input
+      name="email"
+      class="mob:w-[247px] tab:w-[420px] desk:w-[420px] h-[60px] p-5 rounded-[9px] bg-inputGradient bg-no-repeat bg-cover text-white appearance-none bg-transparent focus:shadow-form_shadow outline-none"
+      type="email"
+      ngModel
+      required
+      email
+      #emailRef="ngModel"
+      placeholder="name@gmail.com"
+    />
+    <div
+      *ngIf="submitted && emailRef.invalid"
+      class="text-red-500 text-sm mt-1"
+    >
+      <div *ngIf="emailRef.errors?.['required']">Email обов'язковий</div>
+      <div *ngIf="emailRef.errors?.['email']">Невірний формат email</div>
+    </div>
+  </div>
+  <div class="mb-7">
+    <label class="block mb-1 text-label_col" for="">Ваш пароль:</label>
+    <input
+      name="password"
+      class="mob:w-[247px] tab:w-[420px] desk:w-[420px] h-[60px] p-5 rounded-[9px] border-image-inputBorder bg-inputGradient bg-no-repeat bg-cover text-white appearance-none bg-transparent focus:shadow-form_shadow outline-none"
+      type="password"
+      ngModel
+      required
+      minlength="8"
+      #passwordRef="ngModel"
+      placeholder="Введіть пароль"
+    />
+    <div
+      *ngIf="submitted && passwordRef.invalid"
+      class="text-red-500 text-sm mt-1"
+    >
+      <p *ngIf="passwordRef.errors?.['required']">Пароль обов'язковий!</p>
+      <p *ngIf="passwordRef.errors?.['minlength']">Мінімум 8 символів!</p>
+    </div>
+  </div>
+  <div class="mb-10">
+    <label class="block mb-1 text-label_col" for="">Підтвердження паролю</label>
+    <input
+      name="confirmPassword"
+      class="mob:w-[247px] tab:w-[420px] desk:w-[420px] h-[60px] p-5 rounded-[9px] border-image-inputBorder bg-inputGradient bg-no-repeat bg-cover text-white appearance-none bg-transparent focus:shadow-form_shadow outline-none"
+      type="password"
+      ngModel
+      required
+      #confirmRef="ngModel"
+      placeholder="Ще раз введіть пароль"
+    />
+
+    <p
+      *ngIf="
+        submitted && noteForm.value.password !== noteForm.value.confirmPassword
+      "
+      class="text-red-500 text-sm mt-1"
+    >
+      Паролі не співпадають!
+    </p>
+  </div>
+
+  <button
+    type="submit"
+    class="mob:w-[247px] tab:w-[420px] desk:w-[420px] h-[60px] rounded-[9px] text-white bg-btGradient hover:shadow-bt_shadow focus:shadow-bt_shadow outline-none"
+  >
+    Зареєструватись
+  </button>
+</form>

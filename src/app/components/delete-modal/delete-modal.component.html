@@ -1,0 +1,37 @@
+<div
+  class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50"
+  *ngIf="visible"
+>
+  <div
+    class="relative desktop:w-[494px] tabletBig:w-[494px] tablet:w-[494px] mobile:w-[350px] bg-white px-[71px] p-8 rounded-[24px] shadow-lg"
+  >
+    <button
+      type="button"
+      class="w-6 flex items-center justify-center absolute top-3 right-3 border border-transparent rounded-full hover:bg-text_col hover:text-white"
+      (click)="onCancel()"
+    >
+      &times;
+    </button>
+    <h4
+      class="text-2xl font-semibold text-center mt-8 desktop:mt-0 tabletBig:mt-0 target:mt-0 mobile:mt-5"
+    >
+      Видалити "{{ title }}"
+    </h4>
+    <div class="flex gap-4 items-center mt-6 justify-center">
+      <button
+        class="w-[120px] text-base font-normal border border-red-600 py-4 rounded-full hover:bg-red-600 focus:bg-red-600 hover:text-white"
+        type="button"
+        (click)="onConfirm()"
+      >
+        Так
+      </button>
+      <button
+        class="w-[120px] text-base font-normal text-white bg-btGradient py-4 rounded-full hover:bg-text_col focus:bg-text_col"
+        type="button"
+        (click)="onCancel()"
+      >
+        Ні
+      </button>
+    </div>
+  </div>
+</div>

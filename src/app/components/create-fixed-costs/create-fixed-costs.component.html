@@ -1,0 +1,33 @@
+<div>
+  <div
+    class="flex items-center py-1 mx-[2px] mb-[2px] bg-white shadow-shadow_menu"
+  >
+    <div
+      class="tab:w-[190px] desk:w-[351px] mx-3 text-sx font-normal text-text_op"
+    >
+      <input
+        class="appearance-none tab:pl-3 desk:pl-5 tab:pr-1 desk:pr-3 py-1 w-full tab:w-[116px] desk:w-[136px] focus:outline-none"
+        type="text"
+        [(ngModel)]="title"
+        placeholder="Назва"
+      />
+    </div>
+    <div
+      class="tab:w-[116px] desk:w-[136px] text-center text-sx font-normal text-text_op"
+    >
+      <input
+        class="w-full tab:w-[190px] desk:w-[191px] text-center focus:outline-none"
+        type="number"
+        [(ngModel)]="sum"
+        placeholder="Сума"
+      />
+    </div>
+  </div>
+  <button
+    type="button"
+    (click)="onCreate()"
+    class="absolute bottom-0 left-28 px-3 py-2 border-2 border-white text-white hover:bg-text_col rounded-[16px] hover:shadow-bt_shadow"
+  >
+    Зберегти
+  </button>
+</div>

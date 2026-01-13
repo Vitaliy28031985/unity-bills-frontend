@@ -1,0 +1,48 @@
+<h2 class="text-white text-center font-bold text-3xl mb-10">Увійти</h2>
+
+<form #noteForm="ngForm" (ngSubmit)="login(noteForm)">
+  <div class="mb-7">
+    <label class="block mb-1 text-label_col" for="">Ваш e-mail:</label>
+    <input
+      name="email"
+      class="mob:w-[247px] tab:w-[420px] desk:w-[420px] h-[60px] p-5 rounded-[9px] bg-inputGradient bg-no-repeat bg-cover text-white appearance-none bg-transparent focus:shadow-form_shadow outline-none"
+      type="email"
+      ngModel
+      required
+      email
+      #emailRef="ngModel"
+      placeholder="name@gmail.com"
+    />
+    <div
+      *ngIf="submitted && emailRef.invalid"
+      class="text-red-500 text-sm mt-1"
+    >
+      <div *ngIf="emailRef.errors?.['required']">Email обов'язковий</div>
+      <div *ngIf="emailRef.errors?.['email']">Невірний формат email</div>
+    </div>
+  </div>
+  <div class="mb-10">
+    <label class="block mb-1 text-label_col" for="">Ваш пароль:</label>
+    <input
+      name="password"
+      class="mob:w-[247px] tab:w-[420px] desk:w-[420px] h-[60px] p-5 rounded-[9px] border-image-inputBorder bg-inputGradient bg-no-repeat bg-cover text-white appearance-none bg-transparent focus:shadow-form_shadow outline-none"
+      type="password"
+      ngModel
+      required
+      #passwordRef="ngModel"
+      placeholder="Введіть пароль"
+    />
+    <div
+      *ngIf="submitted && passwordRef.invalid"
+      class="text-red-500 text-sm mt-1"
+    >
+      <p *ngIf="passwordRef.errors?.['required']">Пароль обов'язковий!</p>
+    </div>
+  </div>
+  <button
+    type="submit"
+    class="mob:w-[247px] tab:w-[420px] desk:w-[420px] h-[60px] rounded-[9px] text-white bg-btGradient hover:shadow-bt_shadow focus:shadow-bt_shadow outline-none"
+  >
+    Увійти
+  </button>
+</form>

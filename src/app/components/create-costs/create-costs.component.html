@@ -1,0 +1,109 @@
+<form>
+  <div
+    class="mob:hidden tab:flex items-center py-1 mx-[2px] mb-[2px] bg-white shadow-shadow_menu"
+  >
+    <div
+      class="tab:w-[190px] desk:w-[221px] mx-3 text-sx font-normal text-text_op"
+    >
+      <select
+        class="appearance-none tab:pl-3 desk:pl-5 tab:pr-1 desk:pr-3 py-1 w-full tab:w-[116px] desk:w-[136px] focus:outline-none"
+        name="name"
+        placeholder="30"
+        [(ngModel)]="selectedId"
+      >
+        <option [ngValue]="null" disabled selected>— Оберіть значення —</option>
+        <option *ngFor="let list of pricesList" [value]="list._id">
+          {{ list.title }}
+        </option>
+      </select>
+    </div>
+    <div
+      class="tab:w-[116px] desk:w-[136px] text-center text-sx font-normal text-text_op"
+    >
+      <input
+        [(ngModel)]="number"
+        class="w-full tab:w-[190px] desk:w-[191px] text-center focus:outline-none"
+        type="number"
+        placeholder="30"
+        name="number"
+      />
+    </div>
+    <div
+      class="w-full tab:w-[156px] desk:w-[179px] text-center text-sx font-normal text-text_op"
+    ></div>
+    <div
+      class="w-full tab:w-[105px] desk:w-[105px] text-center text-sx font-normal text-text_op"
+    ></div>
+    <div
+      class="flex justify-center items-center tab:w-[105px] desk:w-[105px] gap-2 py-1"
+    ></div>
+  </div>
+  <button
+    type="button"
+    (click)="onCreate()"
+    class="absolute bottom-0 left-28 px-3 py-2 border-2 border-white text-white hover:bg-text_col rounded-[16px] hover:shadow-bt_shadow"
+  >
+    Зберегти
+  </button>
+</form>
+
+<div
+  class="tab:hidden fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50"
+>
+  <section
+    class="relative bg-white py-8 rounded-[16px] px-[20px] w-[300px] shadow-form_shadow"
+  >
+    <button
+      type="button"
+      (click)="onToggle()"
+      class="absolute flex items-center justify-center top-3 right-3 text-label_col border border-transparent w-6 h-6 rounded-full hover:border-label_col"
+    >
+      &times;
+    </button>
+    <h4 class="mb-10 font-bold text-sm text-center">Додати витрату</h4>
+    <form class="mt-10">
+      <div class="mb-10">
+        <label htmlFor="name" class="flex items-start mb-3 text-sx font-normal"
+          >Назва:</label
+        >
+        <select
+          class="px-5 w-full h-[52px] text-[14px] rounded-[50px] bg-inputGradient bg-no-repeat bg-cover text-text_col appearance-none focus:shadow-form_shadow outline-none"
+          name="name"
+          placeholder="30"
+          [(ngModel)]="selectedId"
+        >
+          <option [ngValue]="null" disabled selected>
+            — Оберіть значення —
+          </option>
+          <option *ngFor="let list of pricesList" [value]="list._id">
+            {{ list.title }}
+          </option>
+        </select>
+      </div>
+
+      <div class="mb-10">
+        <label
+          htmlFor="number"
+          class="flex items-start mb-3 text-sx font-normal"
+          >Ціна:</label
+        >
+
+        <input
+          [(ngModel)]="number"
+          class="px-5 w-full h-[52px] text-[14px] rounded-[50px] bg-inputGradient bg-no-repeat bg-cover text-text_col appearance-none bg-transparent focus:shadow-form_shadow outline-none"
+          type="number"
+          placeholder="30"
+          name="number"
+        />
+      </div>
+
+      <button
+        type="button"
+        (click)="onCreate()"
+        class="px-8 py-3 shadow-shadow_bt bg-bt_col border-2 border-label_col text-text_col rounded-[16px] hover:bg-white hover:text-white hover:bg-label_col"
+      >
+        Зберегти
+      </button>
+    </form>
+  </section>
+</div>

@@ -1,0 +1,25 @@
+<h1 class="mb-5 mt-10 text-white text-lg font-bold">Меню доступу</h1>
+
+<input
+  type="email"
+  class="mob:w-[247px] tab:w-[420px] desk:w-[420px] h-[60px] p-5 rounded-[9px] bg-white bg-no-repeat bg-cover text-black appearance-none bg-transparent focus:shadow-form_shadow outline-none"
+  type="email"
+  [(ngModel)]="email"
+/>
+
+<div class="mt-4 flex items-center gap-2">
+  <button
+    (click)="addAllow()"
+    class="px-3 py-2 mt-3 mob:text-sm tab:text-lg border-2 border-white text-white hover:bg-text_col rounded-[16px]"
+    type="button"
+  >
+    Надати доступ
+  </button>
+  <button
+    (click)="deleteAllow()"
+    class="px-3 py-2 mt-3 mob:text-sm tab:text-lg border-2 border-white text-white hover:bg-text_col rounded-[16px]"
+    type="button"
+  >
+    Забрати доступ
+  </button>
+</div>

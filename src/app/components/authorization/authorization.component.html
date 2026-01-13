@@ -1,0 +1,28 @@
+<div class="flex justify-center">
+  <section
+    class="mt-11 px-9 py-10 bg-formGradient mob:w-[302px] tab:w-[502px] desk:w-[502px] shadow-form_shadow rounded-[20px]"
+  >
+    <div *ngIf="!isRegister">
+      <app-login></app-login>
+    </div>
+    <div *ngIf="isRegister">
+      <app-register></app-register>
+    </div>
+
+    <div class="mt-7 flex items-center gap-2">
+      <p class="mob:text-xs tab:text-sm desk:text-sm text-white font-normal">
+        {{
+          isRegister
+            ? "Увійти у вже створений акаунт"
+            : "У Вас ще немає акаунту"
+        }}
+      </p>
+      <button
+        (click)="toggle()"
+        class="mob:text-xs tab:text-sm desk:text-sm text-white font-bold hover:underline focus:underline"
+      >
+        {{ isRegister ? "Увійти" : "Зареєструватись" }}
+      </button>
+    </div>
+  </section>
+</div>
